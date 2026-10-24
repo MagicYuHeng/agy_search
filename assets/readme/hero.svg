@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">agy-search：为没有 Web Search 的 Claude Code 提供 Antigravity 联网搜索的 MCP 服务</title>
+  <desc id="heroDesc">左侧是项目名称与一句话说明；右侧是真实调用形态的终端示意：一个 query 经 agy-search 调用 search_web，返回答案与真实来源链接。</desc>
+
+  <rect width="1200" height="360" rx="28" fill="#07090A"/>
+  <rect x="1" y="1" width="1198" height="358" rx="27" fill="none" stroke="#1B2420"/>
+
+  <g id="title-block">
+    <text x="64" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2.2" fill="#8A9994">MCP · ANTIGRAVITY → CLAUDE CODE</text>
+
+    <text x="64" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="84" font-weight="700" letter-spacing="-2.5">
+      <tspan fill="#C6F26B">agy</tspan><tspan fill="#F1F5F3">-search</tspan>
+    </text>
+
+    <text x="64" y="206" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="24" fill="#F1F5F3">给没有 Web Search 的 Claude Code，</text>
+    <text x="64" y="238" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="24" fill="#F1F5F3">接上联网搜索。</text>
+
+    <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="19" fill="#D7E0DB">
+      <rect x="64" y="266" width="126" height="40" rx="12" fill="#0F1416" stroke="#24302C"/>
+      <circle cx="84" cy="286" r="4" fill="#C6F26B"/>
+      <text x="98" y="292">read-only</text>
+
+      <rect x="202" y="266" width="104" height="40" rx="12" fill="#0F1416" stroke="#24302C"/>
+      <circle cx="222" cy="286" r="4" fill="#7FB8FF"/>
+      <text x="236" y="292">1 tool</text>
+
+      <rect x="318" y="266" width="190" height="40" rx="12" fill="#0F1416" stroke="#24302C"/>
+      <circle cx="338" cy="286" r="4" fill="#C6F26B"/>
+      <text x="352" y="292">real source URLs</text>
+    </g>
+
+    <text x="64" y="338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#6F7D77">github.com/MagicYuHeng/agy_search</text>
+  </g>
+
+  <g id="proof-terminal">
+    <rect x="700" y="44" width="436" height="272" rx="20" fill="#0D1211" stroke="#24302C"/>
+    <circle cx="728" cy="76" r="5" fill="#C6F26B"/>
+    <text x="744" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#8A9994">agy-search · connected</text>
+    <line x1="700" y1="100" x2="1136" y2="100" stroke="#1B2420"/>
+
+    <text x="724" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#8A9994">$ claude <tspan fill="#F1F5F3">"AI 重要发布"</tspan></text>
+    <rect x="1010" y="119" width="10" height="19" fill="#C6F26B"/>
+
+    <text x="724" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#C6F26B">→ agy-search.search</text>
+    <text x="744" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#8A9994">search_web × 3</text>
+
+    <text x="724" y="246" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#C6F26B">✓ answer 1,055 chars</text>
+    <text x="724" y="278" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#C6F26B">✓ 5 sources · 0 redirects</text>
+
+    <text x="724" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#7FB8FF">openai.com · qq.com · itsdw.cn</text>
+  </g>
+</svg>

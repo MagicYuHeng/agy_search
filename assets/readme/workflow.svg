@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350" role="img" aria-labelledby="flowTitle flowDesc">
+  <title id="flowTitle">agy-search 工作方式</title>
+  <desc id="flowDesc">Claude Code 调用 agy-search MCP 的单工具 search，agy-search 在临时只读工作区中调用本机 agy CLI，agy 使用内置 search_web 搜索，最后把答案与真实来源 URL 返回给 Claude Code。</desc>
+
+  <rect width="1200" height="350" rx="26" fill="#07090A"/>
+  <rect x="1" y="1" width="1198" height="348" rx="25" fill="none" stroke="#1B2420"/>
+
+  <g id="node-claude">
+    <rect x="64" y="58" width="300" height="154" rx="18" fill="#0D1211" stroke="#24302C"/>
+    <text x="88" y="100" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#F1F5F3">Claude Code</text>
+    <text x="88" y="136" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#8A9994">没有可用的内置 WebSearch</text>
+    <text x="88" y="168" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#D7E0DB">调用 MCP 工具</text>
+    <text x="88" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#7FB8FF">mcp__agy-search__search</text>
+  </g>
+
+  <g id="node-mcp">
+    <rect x="450" y="58" width="300" height="154" rx="18" fill="#0F1512" stroke="#C6F26B" stroke-width="1.5"/>
+    <text x="474" y="100" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#F1F5F3">agy-search MCP</text>
+    <text x="474" y="136" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#D7E0DB">单工具 search(query)</text>
+    <text x="474" y="168" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#8A9994">临时工作区 · 只读执行</text>
+    <text x="474" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#C6F26B">stdio · stream-json</text>
+  </g>
+
+  <g id="node-agy">
+    <rect x="836" y="58" width="300" height="154" rx="18" fill="#0D1211" stroke="#24302C"/>
+    <text x="860" y="100" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#F1F5F3">agy CLI</text>
+    <text x="860" y="136" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#8A9994">Antigravity · 已登录</text>
+    <text x="860" y="168" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="20" fill="#D7E0DB">内置 search_web</text>
+    <text x="860" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8A9994">Gemini 3.8 Flash (High)</text>
+  </g>
+
+  <g id="arrows-forward" stroke="#8A9994" stroke-width="1.6" fill="none">
+    <line x1="372" y1="135" x2="438" y2="135"/>
+    <path d="M 438 128 L 450 135 L 438 142 Z" fill="#8A9994" stroke="none"/>
+    <line x1="758" y1="135" x2="824" y2="135"/>
+    <path d="M 824 128 L 836 135 L 824 142 Z" fill="#8A9994" stroke="none"/>
+  </g>
+
+  <g id="return-path">
+    <path d="M 986 212 L 986 262 L 214 262 L 214 224" fill="none" stroke="#C6F26B" stroke-width="1.6"/>
+    <path d="M 207 230 L 214 218 L 221 230 Z" fill="#C6F26B"/>
+    <rect x="472" y="244" width="256" height="36" rx="10" fill="#07090A"/>
+    <text x="600" y="269" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="21" fill="#C6F26B">答案 + 真实来源 URL</text>
+  </g>
+
+  <text x="600" y="326" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="19" fill="#6F7D77">不写代码 · 不运行 shell · 不启用子代理</text>
+</svg>
