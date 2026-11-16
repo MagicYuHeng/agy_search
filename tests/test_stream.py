@@ -20,7 +20,7 @@ class BuildArgvTests(unittest.TestCase):
     def test_default_model_is_forwarded_and_budget_stays_below_timeout(self) -> None:
         argv = _build_argv(DEFAULT_MODEL, 120, "hello")
         self.assertIn("--model", argv)
-        self.assertEqual(argv[argv.index("--model") + 1], "gemini-3.8-flash-high")
+        self.assertEqual(argv[argv.index("--model") + 1], "gemini-4-hydrogen-high")
         self.assertEqual(argv[argv.index("--print-timeout") + 1], "110s")
         self.assertEqual(argv[-2:], ["-p", "hello"])
         self.assertNotIn("--dangerously-skip-permissions", argv)

@@ -6,7 +6,7 @@
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/MCP-stdio-C6F26B?style=flat-square" alt="MCP stdio"></a>
   <img src="https://img.shields.io/badge/Python-3.10%2B-7FB8FF?style=flat-square" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/License-MIT-C6F26B?style=flat-square" alt="License MIT">
-  <img src="https://img.shields.io/badge/Model-gemini--3.8--flash--high-8A9994?style=flat-square" alt="默认模型 gemini-3.8-flash-high">
+  <img src="https://img.shields.io/badge/Model-gemini--4--hydrogen--high-8A9994?style=flat-square" alt="默认模型 gemini-4-hydrogen-high">
 </p>
 
 > **一种基于「反重力」（Antigravity）向没有 Web Search 能力的 Claude Code 提供搜索的服务。**
@@ -20,25 +20,26 @@ Claude Code 的内置 WebSearch 在部分环境里不可用：未启用、被代
 - **一个工具**：`search(query)`。schema 只有一个参数，几乎不占上下文。
 - **只读**：每次调用在一次性临时目录中执行，不使用 `--dangerously-skip-permissions`；不写代码、不跑 shell、不启用子代理。
 - **来源真实**：服务端把 Google grounding 返回的长跳转链接并行解析成发布者 URL，答案最多保留 5 条来源。
-- **模型可配**：默认 `gemini-3.8-flash-high`，可用 `AGY_SEARCH_MODEL` 改成任意 `agy models` 中的模型。
+- **模型可配**：默认 `gemini-4-hydrogen-high`，可用 `AGY_SEARCH_MODEL` 改成任意 `agy models` 中的模型。
 - **失败可恢复**：agy 卡死或返回空答案时自动换新进程重试一次。
 
 ## 真实输出
 
-以下是 2026-10-24 在 `gemini-3.8-flash-high` 上通过 MCP 链路得到的真实结果（节选）：
+以下是 2026-11-16 在 `gemini-4-hydrogen-high` 上通过 MCP 链路得到的真实结果（节选）：
 
 ```text
 > What is the latest stable Python version and its release date?
 
-The latest stable Python version is **Python 3.15.1**, released on **October 21, 2026**.
+The latest stable Python release is **Python 3.15.2**, released on **October 25, 2026**.
+It is the latest maintenance release in the Python 3.15 feature series.
 
 Sources:
-- https://docs.python.org/3/whatsnew/3.15.html
-- https://www.python.org/downloads/latest/
-- https://www.python.org/downloads/
+- https://www.python.org/downloads/release/python-3152/
+- https://peps.python.org/pep-0790/
+- https://www.python.org/downloads/source/
 ```
 
-答案约 300 字符，来源均为 `python.org` 的真实页面；没有保留任何 grounding 跳转链接。
+答案约 640 字符，来源均为 `python.org` / `peps.python.org` 的真实页面；没有保留任何 grounding 跳转链接。
 
 ## 工作方式
 
@@ -70,7 +71,7 @@ git clone https://github.com/MagicYuHeng/agy_search.git
 cd agy_search
 python3 -m venv .venv
 .venv/bin/pip install -e .
-claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-3.8-flash-high -- "$PWD/.venv/bin/python" -m agy_search.server
+claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-4-hydrogen-high -- "$PWD/.venv/bin/python" -m agy_search.server
 ```
 
 **Windows（PowerShell）**
@@ -80,7 +81,7 @@ git clone https://github.com/MagicYuHeng/agy_search.git
 cd agy_search
 python -m venv .venv
 .\.venv\Scripts\pip.exe install -e .
-claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-3.8-flash-high -- "$PWD\.venv\Scripts\python.exe" -m agy_search.server
+claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-4-hydrogen-high -- "$PWD\.venv\Scripts\python.exe" -m agy_search.server
 ```
 
 注册后**新开一个 Claude Code 会话**，工具会以 `mcp__agy-search__search` 出现。可以先验证：
@@ -105,8 +106,8 @@ Windows 把 `.venv/bin/python` 换成 `.venv\Scripts\python.exe`。
 2. 克隆仓库到 ~/tools/agy_search（Windows 为 %USERPROFILE%\tools\agy_search）；目录已存在则执行 git pull。
 3. 在仓库内创建 .venv，并执行 `pip install -e .`。
 4. 注册用户级 MCP（按操作系统选择）：
-   - Windows：claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-3.8-flash-high -- "<仓库路径>\.venv\Scripts\python.exe" -m agy_search.server
-   - macOS/Linux：claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-3.8-flash-high -- "<仓库路径>/.venv/bin/python" -m agy_search.server
+   - Windows：claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-4-hydrogen-high -- "<仓库路径>\.venv\Scripts\python.exe" -m agy_search.server
+   - macOS/Linux：claude mcp add --scope user agy-search -e AGY_SEARCH_MODEL=gemini-4-hydrogen-high -- "<仓库路径>/.venv/bin/python" -m agy_search.server
 5. 运行 `claude mcp list`，确认 agy-search 的状态为 Connected。
 6. 运行 MCP 冒烟测试：`"<仓库路径>/.venv/bin/python" tests/mcp_smoke.py "今天 UTC 日期"`（Windows 用 .venv\Scripts\python.exe），确认返回非空答案。
 7. 报告实际执行的命令、MCP 状态和测试结果。
@@ -118,7 +119,7 @@ Windows 把 `.venv/bin/python` 换成 `.venv\Scripts\python.exe`。
 
 | 变量 | 默认值 | 说明 |
 |---|---|---|
-| `AGY_SEARCH_MODEL` | `gemini-3.8-flash-high` | 默认模型 id（`agy models` 第一列） |
+| `AGY_SEARCH_MODEL` | `gemini-4-hydrogen-high` | 默认模型 id（`agy models` 第一列） |
 | `AGY_SEARCH_EFFORT` | 空 | 可选的 `--effort`（low/medium/high/xhigh/max） |
 | `AGY_SEARCH_TIMEOUT` | `120` | 单次调用硬超时（秒） |
 | `AGY_SEARCH_RETRIES` | `1` | 硬超时后的重试次数 |

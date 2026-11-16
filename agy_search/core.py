@@ -32,13 +32,13 @@ AGY_BIN = os.environ.get("AGY_BIN", "agy")
 
 # Model ids are what `agy models` prints in its first column; the level is part
 # of the id on agy 1.4.x. Override with AGY_SEARCH_MODEL.
-DEFAULT_MODEL = os.environ.get("AGY_SEARCH_MODEL", "gemini-3.8-flash-high").strip()
+DEFAULT_MODEL = os.environ.get("AGY_SEARCH_MODEL", "gemini-4-hydrogen-high").strip()
 
 # Optional --effort override. Empty means "whatever the model id encodes"; not
 # every id accepts an explicit effort, so it stays unset by default.
 DEFAULT_EFFORT = os.environ.get("AGY_SEARCH_EFFORT", "").strip()
 
-# Healthy searches took ~15 s on gemini-3.8-flash-high. A hung agy gets killed
+# Healthy searches took ~15 s on gemini-4-hydrogen-high. A hung agy gets killed
 # and retried once; worst case stays bounded at timeout x (retries + 1).
 DEFAULT_TIMEOUT = int(os.environ.get("AGY_SEARCH_TIMEOUT", "120"))
 RETRIES = int(os.environ.get("AGY_SEARCH_RETRIES", "1"))
